@@ -80,7 +80,7 @@ Bayes.con.slm<-function(y,X,R,b,m1,
   intsp<-rep(1,p)
   #Start the MCMC sampler:
   for(i in 1:n.samples){
-    #update beta:     #assuming mu1=rep(0,p), Sigma1=100*diag(p)
+    #update beta:     #can also use mu1=rep(0,p), Sigma1=100*diag(p) here
     library(tmvmixnorm)
     term1<-xty*(1/sigma2)
     cov1<-chol2inv(chol((xtx/sigma2)+Sigma1inv))
