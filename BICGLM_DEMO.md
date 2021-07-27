@@ -67,7 +67,7 @@ Bayes.con.slm<-function(y,X,R,b,m1,
   #Initialize matrix to store the results:
   ef=p
   samples <- matrix(0,n.samples,p+1)      
-  mu1=coef(ols)
+  mu1=coef(ols)      #Using empirical Bayes estimate
   Sigma1=vcov(ols)
   
   
@@ -80,7 +80,7 @@ Bayes.con.slm<-function(y,X,R,b,m1,
   intsp<-rep(1,p)
   #Start the MCMC sampler:
   for(i in 1:n.samples){
-    #update beta:     #can also use mu1=rep(0,p), Sigma1=100*diag(p) here
+    #update beta:     
     library(tmvmixnorm)
     term1<-xty*(1/sigma2)
     cov1<-chol2inv(chol((xtx/sigma2)+Sigma1inv))
